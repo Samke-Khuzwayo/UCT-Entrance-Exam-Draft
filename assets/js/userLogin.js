@@ -1,8 +1,10 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import app from "./firebase.js"; 
-
-// Get Firebase Authentication instance
-const auth = getAuth(app);
+// Setting up the MySQL database connection
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'Makhuzwayo2705*', // MySQL password
+    database: 'my_Electionsweb_app' // database name
+});
 
 // Function to handle login
 const loginUser = (email, password) => {
@@ -29,11 +31,11 @@ const loginUser = (email, password) => {
         });
 };
 
-// Attach this function to your login form
+// Attaching this function to the login page
 document.getElementById("pages-login").addEventListener("submit", (e) => {
-    e.preventDefault(); // Prevent form from refreshing the page
+    e.preventDefault(); // Preventing the form from refreshing the page
 
-    const email = document.getElementById("email").value; // Get email from input field
+    const email = document.getElementById("emailAddress").value; // Get email from input field
     const password = document.getElementById("password").value; // Get password from input field
     if (email && password) {
         loginUser(email, password);
